@@ -187,13 +187,13 @@ theme="light"
    <div className="w-[80%] max-lg:flex-col max-lg:gap-4 flex justify-between mx-auto mt-5">
        <div className="box w-full md:w-[45%] bg-black flex justify-between text-white font-[Orbitron]">
           <div className='flex gap-3 w-full'><img src="person.svg" alt="" />
-           <div className="flex flex-col justify-center"><p>Person 1</p><p>O Marker</p></div></div>
+           <div className="flex flex-col justify-center"><p>Player 1</p><p>O Marker</p></div></div>
           <div className="flex flex-col bg-[#1d3fff] items-center px-3 py-2"><p className='text-2xl'>{player1}</p><p className='text-xs'>Points</p></div>
 
         </div>
         <div className="box w-full md:w-[45%] bg-black flex justify-between text-white font-[Orbitron]">
           <div className='flex gap-3 w-full'><img src="person.svg" alt="" />
-           <div className="flex flex-col justify-center"><p>Person 2</p><p>X Marker</p></div></div>
+           <div className="flex flex-col justify-center"><p>Player 2</p><p>X Marker</p></div></div>
           <div className="flex flex-col bg-red-700 items-center px-3 py-2"><p className='text-2xl'>{player2}</p><p className='text-xs'>Points</p></div>
 
         </div>
