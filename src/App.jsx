@@ -9,6 +9,7 @@ function App() {
   const [win, setwin] = useState(false)
   const [player1, setplayer1] = useState(0)
   const [player2, setplayer2] = useState(0)
+  const [draw, setdraw] = useState(false)
 
   const setlocal1= ()=>{
     const newscore= parseInt(player1)+1;
@@ -58,6 +59,18 @@ const reset=()=>{
   }
 }
 
+useEffect(() => {
+  const value= Math.random();
+  if(value>0.5){
+    setturn(true);
+  }
+  else{
+    setturn(false);
+  }
+  
+}, [])
+
+
   useEffect(() => {
     let track=0;
     for (const element of array) {
@@ -65,7 +78,7 @@ const reset=()=>{
         track++;
       }
       if(track==9){
-        setwin(true);
+        setdraw(true);
       }
       
     }
@@ -129,7 +142,7 @@ const reset=()=>{
 
   const handlemove= (e)=>{
     console.log(e.target)
-    if(win){
+    if(win || draw){
       toast.error('Game has finished already!', {
         position: "top-right",
         autoClose: 5000,
@@ -198,7 +211,8 @@ theme="light"
 
         </div>
    </div>
-  {win? <div className='text-white px-3 py-1.5 mx-auto mt-3 cursor-default flex items-center gap-1 w-fit bg-green-800'>CONGRATULATIONS!</div>: <div className={`w-fit ${turn? "bg-red-700": "bg-[#1d3fff]"} text-white px-3 py-1.5 mx-auto mt-3 cursor-default flex items-center gap-1`}>Player {turn? "2": "1"} Turn <img className='down' src="down.svg" alt="" /></div>} 
+   {draw && <div className='text-white px-3 py-1.5 mx-auto mt-3 cursor-default flex items-center gap-1 w-fit bg-slate-800'>Game Drawn!</div>}
+  {win? <div className='text-white px-3 py-1.5 mx-auto mt-3 cursor-default flex items-center gap-1 w-fit bg-green-800'>CONGRATULATIONS!</div>: <div className={`w-fit ${turn? "bg-red-700": "bg-[#1d3fff]"} ${draw && "hidden"} text-white px-3 py-1.5 mx-auto mt-3 cursor-default flex items-center gap-1`}>Player {turn? "2": "1"} Turn <img className='down' src="down.svg" alt="" /></div>} 
    <div className="bg-black mt-4 w-[90%] md:w-[50%] mx-auto flex flex-col items-center">
       <div className='flex justify-around w-full border-1 shadow shadow-[orange]'>
         <div id='0' className="h-[100px] w-[33.6%] justify-center flex items-center border border-white " onClick={e=> {handlemove(e)}}></div>
@@ -217,7 +231,7 @@ theme="light"
       </div>
    </div>
 
-    <div className="button pb-[60px] pb flex flex-col gap-4 w-[50%] mx-auto mt-4 justify-center items-center">{win&&<button><a href="" className='bg-[#219b21] hover:bg-[#0c560c] text-white px-2 py-2 font-[Roboto] rounded-md'>Play Again</a></button> }
+    <div className="button pb-[60px] pb flex flex-col gap-4 w-[50%] mx-auto mt-4 justify-center items-center">{(win || draw)&&<button><a href="" className='bg-[#219b21] hover:bg-[#0c560c] text-white px-2 py-2 font-[Roboto] rounded-md'>Play Again</a></button> }
 <button className='bg-red-600 text-white w-fit flex items-center px-2 font-[Roboto] hover:bg-[#bb0606] py-1 rounded-md cursor-pointer' onClick={reset}>Reset Points <img src="reset.svg" alt="" /></button>
 </div>
 <Footer/>
