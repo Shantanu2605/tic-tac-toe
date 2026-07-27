@@ -59,14 +59,20 @@ const reset=()=>{
   }
 }
 
-useEffect(() => {
-  const value= Math.random();
+const setturnrandom= ()=>{
+   const value= Math.random();
   if(value>0.5){
     setturn(true);
   }
   else{
     setturn(false);
   }
+
+}
+
+useEffect(() => {
+  setturnrandom();
+ 
   
 }, [])
 
@@ -79,6 +85,7 @@ const playagain= ()=>{
   setarray(Array(9).fill(null));
   setwin(false);
   setdraw(false);
+  setturnrandom();
 }
 
 
