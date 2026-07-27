@@ -70,6 +70,17 @@ useEffect(() => {
   
 }, [])
 
+const playagain= ()=>{
+  const arr= document.getElementsByClassName("playbox");
+  for (const element of arr) {
+    element.innerHTML= '';
+    
+  }
+  setarray(Array(9).fill(null));
+  setwin(false);
+  setdraw(false);
+}
+
 
   useEffect(() => {
     let track=0;
@@ -215,23 +226,23 @@ theme="light"
   {win? <div className='text-white px-3 py-1.5 mx-auto mt-3 cursor-default flex items-center gap-1 w-fit bg-green-800'>CONGRATULATIONS!</div>: <div className={`w-fit ${turn? "bg-red-700": "bg-[#1d3fff]"} ${draw && "hidden"} text-white px-3 py-1.5 mx-auto mt-3 cursor-default flex items-center gap-1`}>Player {turn? "2": "1"} Turn <img className='down' src="down.svg" alt="" /></div>} 
    <div className="bg-black mt-4 w-[90%] md:w-[50%] mx-auto flex flex-col items-center">
       <div className='flex justify-around w-full border-1 shadow shadow-[orange]'>
-        <div id='0' className="h-[100px] w-[33.6%] justify-center flex items-center border border-white " onClick={e=> {handlemove(e)}}></div>
-        <div id='1' className="h-[100px] w-[33.6%] justify-center flex items-center border border-white " onClick={e=> {handlemove(e)}}></div>
-        <div id='2' className="h-[100px] w-[33.6%] justify-center flex items-center border border-white " onClick={e=> {handlemove(e)}}></div>
+        <div id='0' className="playbox h-[100px] w-[33.6%] justify-center flex items-center border border-white " onClick={e=> {handlemove(e)}}></div>
+        <div id='1' className="playbox h-[100px] w-[33.6%] justify-center flex items-center border border-white " onClick={e=> {handlemove(e)}}></div>
+        <div id='2' className="playbox h-[100px] w-[33.6%] justify-center flex items-center border border-white " onClick={e=> {handlemove(e)}}></div>
       </div>
       <div className='flex justify-around w-full border-1 shadow shadow-[orange]'>
-        <div id='3' className="h-[100px] w-[33.6%] justify-center flex items-center border border-white " onClick={e=> {handlemove(e)}}></div>
-        <div id='4' className="h-[100px] w-[33.6%] justify-center flex items-center border border-white " onClick={e=> {handlemove(e)}}></div>
-        <div id='5' className="h-[100px] w-[33.6%] justify-center flex items-center border border-white " onClick={e=> {handlemove(e)}}></div>
+        <div id='3' className="playbox h-[100px] w-[33.6%] justify-center flex items-center border border-white " onClick={e=> {handlemove(e)}}></div>
+        <div id='4' className="playbox h-[100px] w-[33.6%] justify-center flex items-center border border-white " onClick={e=> {handlemove(e)}}></div>
+        <div id='5' className="playbox h-[100px] w-[33.6%] justify-center flex items-center border border-white " onClick={e=> {handlemove(e)}}></div>
       </div>
        <div className='flex justify-around w-full border-1 shadow shadow-[orange]'>
-        <div id='6' className="h-[100px] w-[33.6%] justify-center flex items-center border border-white " onClick={e=> {handlemove(e)}}></div>
-        <div id='7' className="h-[100px] w-[33.6%] justify-center flex items-center border border-white " onClick={e=> {handlemove(e)}}></div>
-        <div id='8' className="h-[100px] w-[33.6%] justify-center flex items-center border border-white " onClick={e=> {handlemove(e)}}></div>
+        <div id='6' className="playbox h-[100px] w-[33.6%] justify-center flex items-center border border-white " onClick={e=> {handlemove(e)}}></div>
+        <div id='7' className="playbox h-[100px] w-[33.6%] justify-center flex items-center border border-white " onClick={e=> {handlemove(e)}}></div>
+        <div id='8' className="playbox h-[100px] w-[33.6%] justify-center flex items-center border border-white " onClick={e=> {handlemove(e)}}></div>
       </div>
    </div>
 
-    <div className="button pb-[60px] pb flex flex-col gap-4 w-[50%] mx-auto mt-4 justify-center items-center">{(win || draw)&&<button><a href="" className='bg-[#219b21] hover:bg-[#0c560c] text-white px-2 py-2 font-[Roboto] rounded-md'>Play Again</a></button> }
+    <div className="button pb-[60px] pb flex flex-col gap-4 w-[50%] mx-auto mt-4 justify-center items-center">{(win || draw)&&<button className='bg-[#219b21] cursor-pointer hover:bg-[#0c560c] text-white px-2 py-2 font-[Roboto] rounded-md' onClick={playagain}>Play Again</button> }
 <button className='bg-red-600 text-white w-fit flex items-center px-2 font-[Roboto] hover:bg-[#bb0606] py-1 rounded-md cursor-pointer' onClick={reset}>Reset Points <img src="reset.svg" alt="" /></button>
 </div>
 <Footer/>

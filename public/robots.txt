@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tic-tac-toe-798o.vercel.app/sitemap.xml
