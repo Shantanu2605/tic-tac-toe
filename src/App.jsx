@@ -159,7 +159,6 @@ const playagain= ()=>{
   
 
   const handlemove= (e)=>{
-    console.log(e.target)
     if(win || draw){
       toast.error('Game has finished already!', {
         position: "top-right",
@@ -174,7 +173,6 @@ const playagain= ()=>{
 
     }
     else if(e.target.innerHTML){
-      console.log("Invalid move");
     }
     else{
       const newarr= array;
@@ -184,14 +182,12 @@ const playagain= ()=>{
         newarr[parseInt(e.target.id)]=1;
         setturn(!turn);
         setarray(newarr)
-        console.log(newarr)
       }
       else{
         e.target.innerHTML= '<img src="circle.svg" style="width:60px;" alt="" />'
         newarr[parseInt(e.target.id)]=0;
         setarray(newarr);
         setturn(!turn);
-        console.log(newarr)
 
       }
       setturn(!turn);
